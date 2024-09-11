@@ -12,7 +12,7 @@ namespace ElevatorChallenge.Models
         Down,
         Idle
     }
-    public class Elevator : IElevator
+    public class Elevator 
     {
         public int CurrentFloor { get; private set; }
         public Direction CurrentDirection { get; private set; }
@@ -30,6 +30,8 @@ namespace ElevatorChallenge.Models
 
         public void MoveToFloor(int targetFloor)
         {
+            /*this method keeps track at where the elevator is moving, and then sets the floor to be the requested floor,
+             * where then the direction is set to iddle indicating the elevator has stopped on that floor */
             if (targetFloor > CurrentFloor)
                 CurrentDirection = Direction.Up;
             else if (targetFloor < CurrentFloor)
@@ -44,6 +46,8 @@ namespace ElevatorChallenge.Models
 
         public void LoadPeople(int numberOfPeople)
         {
+            /*This method keeps track of the number of people that have been loaded onto the elevator */
+
             if (PeopleInElevator + numberOfPeople <= Capacity)
             {
                 PeopleInElevator += numberOfPeople;
@@ -57,6 +61,9 @@ namespace ElevatorChallenge.Models
 
         public void UnloadPeople(int numberOfPeople)
         {
+            /*Opposite of the previous method */
+
+
             if (PeopleInElevator >= numberOfPeople)
             {
                 PeopleInElevator -= numberOfPeople;

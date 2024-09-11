@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ElevatorChallenge.Services
 {
-    public class ElevatorService
+    public class ElevatorService : IElevatorService
     {
         private readonly IElevatorSelectionStrategy _elevatorSelectionStrategy;
         private readonly List<Elevator> _elevators;
