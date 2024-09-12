@@ -21,7 +21,7 @@ namespace ElevatorChallenge
             ElevatorFactory.CreateElevator(10)
         };
 
-            // Choose strategy
+            // Choose strategy at which to call elevator 
             Console.WriteLine("Select elevator dispatch strategy:");
             Console.WriteLine("1. Nearest Elevator");
             Console.WriteLine("2. Least Busy Elevator");
@@ -29,10 +29,10 @@ namespace ElevatorChallenge
 
             var strategyFactory = ElevatorSelectionFactory.CreateStrategy(choice);        
 
-            // Inject strategy and elevators into the service
+            // This inject the startegy and the number of elevators available , based on which strategy you select , the elevator will be called 
             ElevatorService elevatorService = new ElevatorService(strategyFactory, elevators);
 
-            // Simulate elevator requests
+            // This is just to simulate the request at this point 
             while (true)
             {
                 Console.WriteLine("Enter the floor to request an elevator (or type 'exit' to quit):");
