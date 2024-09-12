@@ -27,22 +27,10 @@ namespace ElevatorChallenge
             Console.WriteLine("2. Least Busy Elevator");
             int choice = int.Parse(Console.ReadLine());
 
-            IElevatorSelectionStrategy strategy;
-
-            switch (choice)
-            {
-                case 1:
-                    strategy = new NearestElevatorStrategy();
-                    break;
-                case 2:
-                    strategy = new LeastBusyElevatorStrategy();
-                    break;
-                default:
-                    throw new InvalidOperationException("Invalid strategy selected");
-            }
+            var strategyFactory = ElevatorSelectionFactory.CreateStrategy(choice);        
 
             // Inject strategy and elevators into the service
-            ElevatorService elevatorService = new ElevatorService(strategy, elevators);
+            ElevatorService elevatorService = new ElevatorService(strategyFactory, elevators);
 
             // Simulate elevator requests
             while (true)

@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Factory\ElevatorFactory.cs" />
+    <Compile Include="Factory\ElevatorSelectionFactory.cs" />
     <Compile Include="Interfaces\IElevatorSelectionStrategy.cs" />
     <Compile Include="Models\Elevator.cs" />
     <Compile Include="Models\LeastBusyElevatorStrategy .cs" />
