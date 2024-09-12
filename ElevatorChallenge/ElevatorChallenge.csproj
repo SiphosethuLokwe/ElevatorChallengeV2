@@ -82,8 +82,8 @@
     <Compile Include="Factory\ElevatorSelectionFactory.cs" />
     <Compile Include="Interfaces\IElevatorSelectionStrategy.cs" />
     <Compile Include="Models\Elevator.cs" />
-    <Compile Include="Models\LeastBusyElevatorStrategy .cs" />
-    <Compile Include="Models\NearestElevatorStrategy.cs" />
+    <Compile Include="Strategy\LeastBusyElevatorStrategy .cs" />
+    <Compile Include="Strategy\NearestElevatorStrategy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ElevatorService.cs" />
