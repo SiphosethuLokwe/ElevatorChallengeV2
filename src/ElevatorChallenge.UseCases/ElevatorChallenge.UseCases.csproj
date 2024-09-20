@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Ardalis.Result" />
+    <PackageReference Include="MediatR" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ElevatorChallenge.Core\ElevatorChallenge.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Contributors\Create\" />
+    <Folder Include="Contributors\Delete\" />
+    <Folder Include="Contributors\Get\" />
+    <Folder Include="Contributors\Update\" />
+  </ItemGroup>
+
+</Project>
