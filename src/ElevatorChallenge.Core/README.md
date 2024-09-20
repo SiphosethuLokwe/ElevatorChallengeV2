@@ -1,25 +1,58 @@
-﻿## Core (Domain Model) Project
+﻿Elevator Challenge - Clean Architecture using MediatR
+Project Overview
+The Elevator Challenge project demonstrates the application of the MediatR pattern within a Clean Architecture structure. This project simulates the behavior of an elevator system, allowing requests to be made for elevators to move to a specific floor, load and unload passengers, and handle multiple requests concurrently.
 
-In Clean Architecture, the central focus should be on Entities and business rules.
+The project is based on Ardalis Clean Architecture principles, leveraging MediatR for implementing domain events and request handling to promote decoupling and scalability.
 
-In Domain-Driven Design, this is the Domain Model.
+Why Use the MediatR Pattern?
+1. Separation of Concerns:
+MediatR helps maintain a clean separation of concerns by ensuring that business logic, event handling, and service orchestration are separated from the core domain logic. Instead of tightly coupling services and objects to event handlers, MediatR acts as a mediator to handle interactions between them.
 
-This project should contain all of your Entities, Value Objects, and business logic.
+2. Decoupling:
+The MediatR pattern decouples the sender of a request from its receiver. This means the ElevatorService does not need to know which class handles the logic for moving elevators or loading/unloading passengers. Instead, these responsibilities are handed off to domain event handlers using MediatR, leading to highly maintainable code.
 
-Entities that are related and should change together should be grouped into an Aggregate.
+3. Domain Events:
+Using MediatR to manage domain events allows us to dispatch and handle events asynchronously, such as:
 
-Entities should leverage encapsulation and should minimize public setters.
+Moving an elevator (MoveToFloorEvent).
+Loading and unloading passengers (LoadPeopleEvent, UnloadPeopleEvent).
+MediatR ensures these events are published and processed without the elevator needing direct knowledge of the event handler logic.
 
-Entities can leverage Domain Events to communicate changes to other parts of the system.
+4. Scalability and Extensibility:
+With MediatR, you can easily add new event handlers (e.g., handling new types of elevator requests) without modifying the core service logic. This enables you to extend the system with minimal code changes.
 
-Entities can define Specifications that can be used to query for them.
+Key Features
+ElevatorService: Manages elevator operations including moving, loading, and unloading.
+MediatR: Handles domain events to coordinate elevator movements and passenger operations.
+Event Handling: Implements domain events for elevator actions (move, load, unload).
+Elevator Selection Strategies: Uses different strategies for selecting the most suitable elevator.
+Unit, Functional, and Integration Tests: Verifies the correctness of the elevator system using Xunit and Moq.
 
-For mutable access, Entities should be accessed through a Repository interface.
 
-Read-only ad hoc queries can use separate Query Services that don't use the Domain Model.
+Project Structure
 
-Need help? Check out the sample here:
-https://github.com/ardalis/CleanArchitecture/tree/main/sample
+ElevatorChallenge
+│   ├── Core
+│   │   ├── Entities
+│   │   ├── Interfaces
+│   │   └── Events
+│   ├── Infrastructure
+│   │   └── DomainEventDispatcher.cs
+│   ├── Application
+│   └── Tests
+│       ├── UnitTests
+│       ├── FunctionalTests
+│       └── IntegrationTests
+└── README.md
 
-Still need help?
-Contact us at https://nimblepros.com
+Event Flow
+Elevator Request: When an elevator is requested, the ElevatorService selects an appropriate elevator using the strategy.
+MoveToFloorEvent: The elevator triggers a MoveToFloorEvent via MediatR to simulate moving to the requested floor.
+LoadPeopleEvent/UnloadPeopleEvent: Once the elevator reaches the floor, it triggers events for loading and unloading people.
+
+Test Coverage
+The project includes comprehensive tests:
+
+Unit Tests: Verifying individual behaviors of elevator service, strategies, and event handling.
+Functional Tests: Testing how multiple elevators handle various scenarios with passenger movement.
+Integration Tests: Ensuring the overall elevator system works correctly with event-driven communication.

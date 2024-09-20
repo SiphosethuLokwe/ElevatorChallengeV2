@@ -34,7 +34,6 @@ public class ElevatorService : IElevatorService
       {
         await _mediator.Publish(new MoveToFloorEvent(selectedElevator, floor));
 
-        //another possible way to do this would be to have each function have its own event and handler and publish its own event 
         await _mediator.Publish(new LoadPeopleEvent(selectedElevator, peopleWaiting));
 
         //await _mediator.Publish(new UnloadPeopleEvent(selectedElevator.elevatorId, selectedElevator.PeopleInElevator, peopleWaiting));
