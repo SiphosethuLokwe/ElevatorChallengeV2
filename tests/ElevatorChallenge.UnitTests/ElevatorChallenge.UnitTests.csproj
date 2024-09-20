@@ -6,6 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Core\ContributorAggregate\**" />
+    <Compile Remove="UseCases\**" />
+    <EmbeddedResource Remove="Core\ContributorAggregate\**" />
+    <EmbeddedResource Remove="UseCases\**" />
+    <None Remove="Core\ContributorAggregate\**" />
+    <None Remove="UseCases\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Core\Services\ToDoItemSearchService_GetAllIncompleteItems.cs" />
     <Compile Remove="Core\Services\ToDoItemSearchService_GetNextIncompleteItem.cs" />
   </ItemGroup>
@@ -31,11 +40,6 @@
     <None Update="xunit.runner.json">
 	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Core\ContributorAggregate\" />
-    <Folder Include="UseCases\Contributors\" />
   </ItemGroup>
 
   <ItemGroup>
